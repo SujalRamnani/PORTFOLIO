@@ -373,6 +373,59 @@ function initProjectsHover() {
     });
 }
 
+// ---- Custom Projects Section with Images ----
+const projects = [
+  {
+    name: "Portfolio Website",
+    description: "A personal portfolio site to showcase my skills, experience, and projects. Built with HTML, CSS, and JavaScript.",
+    github: "https://github.com/SujalRamnani/portfolio",
+    live: "",
+    tech: ["HTML", "CSS", "JavaScript"],
+    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?fit=crop&w=600&q=80"
+  },
+  {
+    name: "Sidcup Golf Club",
+    description: "A website for Sidcup Golf Club with features such as booking, events, and information. Built with React and Tailwind CSS.",
+    github: "https://github.com/SujalRamnani/Sidcup-Golf-Club",
+    live: "https://sidcupgolfclub.vercel.app/",
+    tech: ["React", "Tailwind CSS", "JavaScript"],
+    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?fit=crop&w=600&q=80"
+  },
+  {
+    name: "Student Management System (DBMS)",
+    description: "A DBMS project for managing student data, attendance, and grades. Built with SQL and Java.",
+    github: "https://github.com/SujalRamnani/Student-Management-System",
+    live: "",
+    tech: ["Java", "SQL", "DBMS"],
+    image: "https://images.unsplash.com/photo-1513258496099-48168024aec0?fit=crop&w=600&q=80"
+  }
+];
+
+// Render Projects
+function renderCustomProjects() {
+  const projectsDiv = document.getElementById('github-projects');
+  projectsDiv.innerHTML = projects.map(project => `
+    <div class="project-card">
+      <div class="project-image">
+        <img src="${project.image}" alt="${project.name}">
+        <div class="project-overlay">
+          <div class="project-links">
+            <a href="${project.github}" class="project-link" target="_blank"><i class="fab fa-github"></i></a>
+            ${project.live ? `<a href="${project.live}" class="project-link" target="_blank"><i class="fas fa-external-link-alt"></i></a>` : ''}
+          </div>
+        </div>
+      </div>
+      <div class="project-content">
+        <h3>${project.name}</h3>
+        <p>${project.description}</p>
+        <div class="project-tech">
+          ${project.tech.map(t => `<span class="tech-tag">${t}</span>`).join('')}
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize 3D background
@@ -388,6 +441,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initCursorEffect();
     initSkillsAnimation();
     initProjectsHover();
+    renderCustomProjects();
     
     // Add event listeners
     window.addEventListener('resize', onWindowResize);
